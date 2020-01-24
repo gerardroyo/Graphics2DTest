@@ -28,9 +28,24 @@ public class Ball {
         else if (collision()){
             ya = -game.speed;
             y = game.racquet.getTopY() - DIAMETER;
-            game.speed++;
-        } else
-            changeDirection = false;
+            //game.speed++;
+        }
+        else if(collisionMahou()){
+            System.out.println(this.y + this.DIAMETER + " <= " + game.mahou.getY());
+            System.out.println(this.y + " <= " + game.mahou.getUnderY());
+            if(this.y + this.DIAMETER - 1 <= game.mahou.getY()){
+                ya = -1;
+            }
+            else if(this.y + 1 >= game.mahou.getUnderY()){
+                ya = 1;
+            }
+            else if(this.x + this.DIAMETER - 1 <= game.mahou.getX()){
+                xa = -1;
+            }
+            else if(this.x + 1 >= game.mahou.getRightX()){
+                xa = 1;
+            }
+        }
 
         //if (changeDirection)
             //Sound.BALL.play();
@@ -40,6 +55,9 @@ public class Ball {
 
     private boolean collision() {
         return game.racquet.getBounds().intersects(getBounds());
+    }
+    private boolean collisionMahou() {
+        return game.mahou.getBoundsMahou().intersects(getBounds());
     }
 
     public void paint(Graphics2D g) {
