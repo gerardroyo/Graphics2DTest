@@ -50,7 +50,7 @@ public class Main extends JPanel {
 
         ball.paint(g2d);
         racquet.paint(g2d);
-        mahou.paint(g2d, 200, 200, 60, 10);
+        mahou.paint(g2d, 100, 200, 60, 10);
 
         g2d.setColor(Color.GRAY);
         g2d.setFont(new Font("Verdana", Font.BOLD, 30));
